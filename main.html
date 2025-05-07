@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEDLUX - Váy cưới thiết kế riêng</title>
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f5f5f5;
+            --bg-dark: #222;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        /* Header styles */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-icons a {
+            margin-left: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-color: var(--bg-light);
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            max-width: 150px;
+            text-align: center;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+        }
+        
+        /* Mobile mockup */
+        .mobile-mockup {
+            position: absolute;
+            right: 10%;
+            bottom: -90px;
+            width: 280px;
+            height: 550px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 3;
+        }
+        
+        .mobile-screen {
+            position: absolute;
+            inset: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .mobile-content {
+            padding: 15px;
+        }
+        
+        .mobile-content img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        /* Features section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+        
+        .feature-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.5rem;
+            flex: 1 1 200px;
+            max-width: 280px;
+        }
+        
+        .feature-icon {
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-text {
+            font-size: 0.9rem;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .pagination-dot.active {
+            background-color: var(--primary-color);
+        }
+        
+        /* Product section */
+        .product-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1rem;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* New tag */
+        .new-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .hero-content {
+                padding: 3rem 2rem;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .mobile-mockup {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin: -100px auto 0;
+                width: 240px;
+                height: 480px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-button {
+                display: block;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">WEDLUX</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">TRANG CHỦ</a></li>
+                <li><a href="#">GIỚI THIỆU</a></li>
+                <li><a href="#">TRANG PHỤC</a></li>
+                <li><a href="#">PHỤ KIỆN</a></li>
+                <li><a href="#">BÀI VIẾT - SỰ KIỆN</a></li>
+                <li><a href="#">LIÊN HỆ</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="search-icon">🔍</i></a>
+                <a href="#"><i class="user-icon">👤</i></a>
+                <a href="#"><i class="cart-icon">🛒</i></a>
+            </div>
+            <button class="menu-button">☰</button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Váy cưới<br>Thiết kế riêng</h1>
+            <p class="hero-subtitle">Thanh lịch, độc đáo, mang vẻ đẹp riêng của bạn</p>
+            <a href="#" class="cta-button">XEM THÊM</a>
+            
+            <div class="pagination" style="margin-top: 3rem;">
+                <div class="pagination-dot active"></div>
+                <div class="pagination-dot"></div>
+                <div class="pagination-dot"></div>
+            </div>
+        </div>
+        
+        <div class="hero-image">
+            <img src="/api/placeholder/800/600" alt="Wedding couple holding hands with bouquet">
+        </div>
+        
+        <!-- Mobile Mockup -->
+        <div class="mobile-mockup">
+            <div class="mobile-screen">
+                <div class="mobile-header" style="text-align: center; padding: 15px 0;">
+                    <div style="width: 40px; height: 4px; background-color: #ddd; margin: 0 auto 15px;"></div>
+                    <h3>Tiệc Cưới</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Đơn giản & Tinh tế</p>
+                </div>
+                <div class="mobile-content">
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Giữ lại trọn vẹn khoảnh khắc</p>
+                    <img src="/api/placeholder/400/250" alt="Wedding decoration">
+                    
+                    <div style="display: flex; align-items: center; margin-top: 20px; background-color: #f8f8f8; padding: 10px; border-radius: 8px;">
+                        <div style="margin-right: 10px;">
+                            <span style="font-size: 1.2rem;">📦</span>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; font-size: 0.9rem;">Miễn phí giao hàng</p>
+                            <p style="font-size: 0.8rem; color: #666;">07 ngày đổi trả</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 20px;">VÁY CƯỚI</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-text">
+                <p><strong>Vận chuyển & Trung tín</strong></p>
+                <p style="color: #666; font-size: 0.8rem;">Đơn giá trọng trí, miễn phí vận chuyển</p>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <div class="feature-text">
+                <p><strong>Khuyến mãi hấp dẫn</strong></p>
+                <p style="color: #666; font-size: 0.8rem;">Giảm giá lên đến 20%</p>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <div class="feature-text">
+                <p><strong>Hoán đổi dễ nạp</strong></p>
+                <p style="color: #666; font-size: 0.8rem;">30 ngày đổi trả miễn phí</p>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🛎️</div>
+            <div class="feature-text">
+                <p><strong>Hỗ trợ chuyên nghịêp</strong></p>
+                <p style="color: #666; font-size: 0.8rem;">Tư vấn làm đẹp trọn gói</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="section-title">
+            <h2>VÁY CƯỚI HAY ĐẾN</h2>
+            <p class="section-subtitle">Chọn trang phục lộng lẫy cho ngày trọng đại của bạn</p>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div style="position: relative;">
+                    <span class="new-tag">Mới</span>
+                    <img src="/api/placeholder/400/600" alt="Wedding Dress Style 2023">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Style 2023</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div style="position: relative;">
+                    <img src="/api/placeholder/400/600" alt="Wedding Dress Style 2024">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Style DFGV67789</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div style="position: relative;">
+                    <img src="/api/placeholder/400/600" alt="Wedding Dress Style 2025">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Style TSI399</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div style="position: relative;">
+                    <img src="/api/placeholder/400/600" alt="Wedding Dress Style 2026">
+                </div>
+                <div class="product-info">
+                    <p class="product-name">Style 2027</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Pagination functionality
+        const dots = document.querySelectorAll('.pagination-dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                // Here you would implement a slider functionality
+                // to change the hero content based on the active dot
+            });
+        });
+        
+        // Product hover effect
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
